@@ -53,26 +53,39 @@ function printPlayerChoices(computerChoice, playerChoice) {
   return;
 }
 
-function printFinalScores(computerScore, playerScore) {
+function calculateScores(winner, scores) {
+  switch (winner) {
+    case "player":
+      scores.player++;
+      break;
+    case "computer":
+      scores.computer++;
+      break;
+    default:
+      break;
+  }
+  return;
+}
+
+function printFinalScores(scores) {
   console.log("")
   console.log("--------------------------------------------");
   console.log("Final Score");
-  console.log(`You: ${playerScore}`);
-  console.log(`Computer: ${computerScore}`);
+  console.log(`You: ${scores.player}`);
+  console.log(`Computer: ${scores.computer}`);
   
-  if (playerScore === computerScore) {
+  if (scores.player === scores.computer) {
     console.log("You tied!");
   } else {
     console.log(
-      `${playerScore > computerScore ? "You " : "The computer "} won!`
+      `${scores.player > scores.computer ? "You " : "The computer "} won!`
     );
   }
   return;
 }
 
 function playGame() {
-  var playerScore = 0;
-  var computerScore = 0;
+  var scores = {"player": 0, "computer": 0}
 
   console.log("Let's play rock-paper-scissors!");
 
@@ -84,18 +97,9 @@ function playGame() {
     printPlayerChoices(computerChoice, playerChoice);
 
     var winner = getRoundWinner(computerChoice, playerChoice);
-    switch (winner) {
-      case "player":
-        playerScore++;
-        break;
-      case "computer":
-        computerScore++;
-        break;
-      default:
-        break;
-    }
+    calculateScores(winner, scores);
   }
 
-  printFinalScores(computerScore, playerScore);
+  printFinalScores(scores);
   return;
 }
