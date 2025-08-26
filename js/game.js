@@ -41,37 +41,19 @@ function getRoundWinner(computerChoice, playerChoice) {
   return "computer";
 }
 
-function playGame() {
-  var playerScore = 0;
-  var computerScore = 0;
+function printRoundHeader(round) {
+  console.log("--------------------------------------------");
+  console.log(`Round ${round}`);
+  return;
+}
 
-  console.log("Let's play rock-paper-scissors!");
+function printPlayerChoices(computerChoice, playerChoice) {
+  console.log(`The computer chose: ${computerChoice}`);
+  console.log(`You chose: ${playerChoice}`);
+  return;
+}
 
-  for (var round = 1; round <= 5; round++) {
-    console.log("--------------------------------------------");
-    console.log(`Round ${round}`);
-
-    const computerChoice = getComputerChoice();
-    const playerChoice = getPlayerChoice();
-
-    console.log(`The computer chose: ${computerChoice}`);
-    console.log(`You chose: ${playerChoice}`);
-
-    var winner = getRoundWinner(computerChoice, playerChoice);
-    console.log()
-
-    switch (winner) {
-      case "player":
-        playerScore++;
-        break;
-      case "computer":
-        computerScore++;
-        break;
-      default:
-        break;
-    }
-  }
-
+function printFinalScores(computerScore, playerScore) {
   console.log("")
   console.log("--------------------------------------------");
   console.log("Final Score");
@@ -85,4 +67,35 @@ function playGame() {
       `${playerScore > computerScore ? "You " : "The computer "} won!`
     );
   }
+  return;
+}
+
+function playGame() {
+  var playerScore = 0;
+  var computerScore = 0;
+
+  console.log("Let's play rock-paper-scissors!");
+
+  for (var round = 1; round <= 5; round++) {
+    printRoundHeader(round);
+
+    const computerChoice = getComputerChoice();
+    const playerChoice = getPlayerChoice();
+    printPlayerChoices(computerChoice, playerChoice);
+
+    var winner = getRoundWinner(computerChoice, playerChoice);
+    switch (winner) {
+      case "player":
+        playerScore++;
+        break;
+      case "computer":
+        computerScore++;
+        break;
+      default:
+        break;
+    }
+  }
+
+  printFinalScores(computerScore, playerScore);
+  return;
 }
