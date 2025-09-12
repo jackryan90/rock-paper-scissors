@@ -1,0 +1,59 @@
+body {
+  font-size: 18px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button-container > button {
+  font-size: inherit;
+  font-family: inherit;
+  flex: 0 1 auto;
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
+}
+
+#rock {
+  background-color: #43e8e5;
+  color: black;
+}
+#rock:hover {
+  background-color: #37a2a0;
+}
+#rock:active {
+  background-color: #93dedd;
+}
+
+#paper {
+  background-color: #d8d6cf;
+  color: black;
+}
+#paper:hover {
+  background-color: #93918d;
+}
+#paper:active {
+  background-color: #f9f7f0;
+}
+
+#scissors {
+  background-color: #e37070;
+  color: black;
+}
+#scissors:hover {
+  background-color: #d26767;
+}
+#scissors:active {
+  background-color: #fd7b7b;
+}
+
+#output {
+  width: 640px;
+  margin: 20px auto;
+}
